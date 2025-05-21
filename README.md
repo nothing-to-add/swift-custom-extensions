@@ -26,7 +26,7 @@ This package includes extensions for:
 
 ### Color Extensions
 
-- **`Color(hex:alpha:)`** - Creates a SwiftUI Color from a hexadecimal value
+- **`Color(hex: String)`** - Creates a SwiftUI Color from a hexadecimal string (supports formats: RGB, RRGGBB, AARRGGBB)
 - **`Color.isDarkMode`** - Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
 ## Requirements
@@ -73,9 +73,13 @@ let message = "greeting".localizedNS(withComment: "Shown on welcome screen")
 ```swift
 import CustomExtensions
 
-// Create color from hex value
+// Create color from hex integer value
 let primaryColor = Color(hex: 0x3498DB)
-let secondaryColor = Color(hex: 0x2ECC71, alpha: 0.8)
+
+// Create color from hex string
+let redColor = Color(hex: "FF0000")     // RGB (24-bit)
+let blueColor = Color(hex: "00F")       // RGB (12-bit shorthand)
+let greenWithAlpha = Color(hex: "80FF00FF") // ARGB (32-bit with alpha)
 
 // Check for dark mode (iOS/tvOS only)
 if Color.isDarkMode {

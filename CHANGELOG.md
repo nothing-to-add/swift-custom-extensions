@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial development setup
+- New Color extension: `init(hex: String)` that accepts hexadecimal color strings in various formats (RGB, RRGGBB, AARRGGBB)
 
 ## [1.0.0] - 2025-05-21
 
