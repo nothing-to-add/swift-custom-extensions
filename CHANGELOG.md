@@ -9,7 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Initial development setup
-- New Color extension: `init(hex: String)` that accepts hexadecimal color strings in various formats (RGB, RRGGBB, AARRGGBB)
+
+## [1.0.1] - 2025-05-21
+
+### Improved
+- Enhanced documentation for `Color(hex: String)` extension with more examples and clear format explanation
+- Added support for hex strings with # prefix
+- Improved documentation for `Color(hex: UInt, alpha:)` extension with detailed examples and parameter explanations
 
 ## [1.0.0] - 2025-05-21
 
@@ -22,5 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Color(hex:alpha:)`: Creates a SwiftUI Color from a hexadecimal value
   - `Color.isDarkMode`: Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
-[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nothing-to-add/swift-custom-extensions/releases/tag/v1.0.0

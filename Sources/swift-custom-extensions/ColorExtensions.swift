@@ -13,22 +13,28 @@ import SwiftUI
 
 public extension Color {
     
-    /// Creates a color from a hexadecimal value.
+    /// Creates a color from a hexadecimal string.
     ///
-    /// This initializer allows you to create a SwiftUI Color using hexadecimal notation
-    /// commonly used in web and graphic design.
+    /// This initializer allows you to create a SwiftUI Color using hexadecimal string notation
+    /// commonly used in web development and design. It supports multiple formats:
     ///
     /// - Parameters:
-    ///   - hex: A hexadecimal integer value representing RGB values (e.g., 0xFF0000 for red)
+    ///   - hex: A string containing hexadecimal color representation (with or without # prefix)
+    ///          Supported formats:
+    ///          - RGB: 3 characters (e.g., "F00" for red)
+    ///          - RRGGBB: 6 characters (e.g., "FF0000" for red)
+    ///          - AARRGGBB: 8 characters (e.g., "FFFF0000" for fully opaque red)
     ///
     /// - Example:
     /// ```swift
-    /// // Create a red color
-    /// let redColor = Color(hex: 0xFF0000)
-    ///
-    /// // Using with hex literals
-    /// let green = Color(hex: 0x00FF00)
+    /// // Create colors from hex strings
+    /// let red = Color(hex: "FF0000")     // 6-digit RGB format
+    /// let blue = Color(hex: "#0000FF")   // With # prefix
+    /// let green = Color(hex: "0F0")      // 3-digit RGB shorthand format
+    /// let translucentYellow = Color(hex: "80FFFF00") // With alpha (50% opaque yellow)
     /// ```
+    ///
+    /// - Note: Invalid hex strings will result in a white or clear color depending on the format.
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
@@ -51,6 +57,45 @@ public extension Color {
             green: Double(g) / 255,
             blue:  Double(b) / 255,
             opacity: Double(a) / 255
+        )
+    }
+}
+
+public extension Color {
+    
+    /// Creates a color from a hexadecimal integer value with an optional alpha component.
+    ///
+    /// This initializer allows you to create a SwiftUI Color using hexadecimal integer notation
+    /// commonly used in programmatic color definitions.
+    ///
+    /// - Parameters:
+    ///   - hex: A hexadecimal integer value representing RGB values (e.g., 0xFF0000 for red)
+    ///   - alpha: An optional alpha value between 0 and 1 (default is 1, fully opaque)
+    ///
+    /// - Example:
+    /// ```swift
+    /// // Create a fully opaque red color
+    /// let red = Color(hex: 0xFF0000)
+    ///
+    /// // Create a blue color with 50% opacity
+    /// let translucentBlue = Color(hex: 0x0000FF, alpha: 0.5)
+    ///
+    /// // Using Swift hex literals
+    /// let green = Color(hex: 0x00FF00)
+    ///
+    /// // Using computed values
+    /// let colorValue = 0xFF + (0x00 << 8) + (0xAA << 16)
+    /// let customColor = Color(hex: UInt(colorValue))
+    /// ```
+    ///
+    /// - Note: The hex value should be in RGB format (0xRRGGBB).
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 8) & 0xff) / 255,
+            blue: Double(hex & 0xff) / 255,
+            opacity: alpha
         )
     }
 }

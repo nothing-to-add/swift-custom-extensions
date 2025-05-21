@@ -26,7 +26,8 @@ This package includes extensions for:
 
 ### Color Extensions
 
-- **`Color(hex: String)`** - Creates a SwiftUI Color from a hexadecimal string (supports formats: RGB, RRGGBB, AARRGGBB)
+- **`Color(hex: UInt, alpha:)`** - Creates a SwiftUI Color from a hexadecimal integer value (0xRRGGBB format) with optional opacity
+- **`Color(hex: String)`** - Creates a SwiftUI Color from a hexadecimal string (supports formats: RGB, RRGGBB, AARRGGBB, with or without # prefix)
 - **`Color.isDarkMode`** - Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
 ## Requirements
@@ -74,12 +75,13 @@ let message = "greeting".localizedNS(withComment: "Shown on welcome screen")
 import CustomExtensions
 
 // Create color from hex integer value
-let primaryColor = Color(hex: 0x3498DB)
+let primaryColor = Color(hex: 0x3498DB)        // Fully opaque color
+let translucentPurple = Color(hex: 0x9B59B6, alpha: 0.5)  // 50% opacity
 
 // Create color from hex string
-let redColor = Color(hex: "FF0000")     // RGB (24-bit)
-let blueColor = Color(hex: "00F")       // RGB (12-bit shorthand)
-let greenWithAlpha = Color(hex: "80FF00FF") // ARGB (32-bit with alpha)
+let redColor = Color(hex: "FF0000")       // RGB (24-bit)
+let blueColor = Color(hex: "#00F")        // RGB (12-bit shorthand) with # prefix
+let greenWithAlpha = Color(hex: "80FF00FF") // ARGB (32-bit with alpha - 50% opaque)
 
 // Check for dark mode (iOS/tvOS only)
 if Color.isDarkMode {
