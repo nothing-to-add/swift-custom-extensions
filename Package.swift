@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "CustomExtensions",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v10_14),
-        .watchOS(.v5),
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .watchOS(.v6),
         .visionOS(.v1)
     ],
     products: [
