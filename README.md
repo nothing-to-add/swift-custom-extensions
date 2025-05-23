@@ -30,6 +30,11 @@ This package includes extensions for:
 - **`Color(hex: String)`** - Creates a SwiftUI Color from a hexadecimal string (supports formats: RGB, RRGGBB, AARRGGBB, with or without # prefix)
 - **`Color.isDarkMode`** - Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
+### LocalizedStringKey Extensions
+
+- **`keyString`** - Extracts the underlying string key from a LocalizedStringKey using reflection
+- **`toLocalizedString()`** - Converts a LocalizedStringKey to a properly localized String with line break handling
+
 ## Requirements
 
 - Swift 6.0+
@@ -87,6 +92,28 @@ let greenWithAlpha = Color(hex: "80FF00FF") // ARGB (32-bit with alpha - 50% opa
 if Color.isDarkMode {
     // Use dark mode specific styling
 }
+```
+
+### LocalizedStringKey Extensions
+
+```swift
+import CustomExtensions
+
+// Extract the key from a LocalizedStringKey
+let localizedKey = LocalizedStringKey("welcome_message")
+let keyValue = localizedKey.keyString // Returns "welcome_message"
+
+// Convert LocalizedStringKey to String with proper line break handling
+// Assuming in Localizable.strings: "multiline_text" = "First line\\nSecond line";
+let localizedString = LocalizedStringKey("multiline_text").toLocalizedString()
+// Result: "First line
+//          Second line" with an actual line break
+
+// Use in UIKit components that don't support LocalizedStringKey
+label.text = LocalizedStringKey("button_title").toLocalizedString()
+
+// Useful for debugging localization issues
+print("Using key: \(localizedKey.keyString), localized as: \(localizedKey.toLocalizedString())")
 ```
 
 ## License
