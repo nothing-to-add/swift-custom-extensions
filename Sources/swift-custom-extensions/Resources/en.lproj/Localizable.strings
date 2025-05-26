@@ -1,0 +1,4 @@
+/* Sample localization strings */
+"hello_world" = "Hello World";
+"welcome_message" = "Welcome to our app!";
+"button_title" = "Continue";

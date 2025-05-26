@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial development setup
 
+## [1.1.0] - 2025-05-26
+
+### Added
+- New String extensions for package-specific localization:
+  - `toLocalizedForPackage()`: Returns a localized string using resources from the package's bundle
+  - `toLocalizedStringForPackage()`: Returns a properly formatted localized string with actual line breaks
+- Package now supports localized resources with proper configuration
+- Added defaultLocalization to package manifest for better resource handling
+
+### Changed
+- Improved documentation for all String extensions with more detailed examples and usage notes
+
 ## [1.0.2] - 2025-05-23
 
 ### Added
@@ -35,7 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Color(hex:alpha:)`: Creates a SwiftUI Color from a hexadecimal value
   - `Color.isDarkMode`: Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
-[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.2...v1.1.0
 [1.0.2]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nothing-to-add/swift-custom-extensions/releases/tag/v1.0.0

@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "CustomExtensions",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15),
@@ -15,13 +16,14 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "CustomExtensions",
-            targets: ["CustomExtensions"]),
+            targets: ["swift-custom-extensions"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CustomExtensions"),
-
+            name: "swift-custom-extensions",
+            resources: [.process("Resources")]
+        ),
     ]
 )

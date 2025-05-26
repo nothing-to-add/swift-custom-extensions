@@ -23,6 +23,8 @@ This package includes extensions for:
 
 - **`localized()`** - Converts a String to a `LocalizedStringKey` for easy use with SwiftUI localization
 - **`localizedNS(withComment:)`** - Returns a localized version of the string using `NSLocalizedString`
+- **`toLocalizedForPackage()`** - Returns a localized version of the string using resources from the package's bundle
+- **`toLocalizedStringForPackage()`** - Returns a properly formatted localized string from the package with actual line breaks
 
 ### Color Extensions
 
@@ -72,6 +74,14 @@ Text("hello_world".localized())  // Uses LocalizedStringKey for SwiftUI
 
 // Foundation localization
 let message = "greeting".localizedNS(withComment: "Shown on welcome screen")
+
+// Package-specific localization
+let packageMessage = "package_greeting".toLocalizedForPackage()  // Uses localized string from the package's resources
+
+// Package-specific localization with line break handling
+// Assuming in package's Localizable.strings: "multiline_text" = "First line\\nSecond line";
+let formattedText = "multiline_text".toLocalizedStringForPackage()
+// Result has actual line breaks instead of escaped sequences
 ```
 
 ### Color Extensions

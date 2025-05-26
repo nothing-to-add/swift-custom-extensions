@@ -10,6 +10,7 @@
 
 import Foundation
 import SwiftUICore
+import SwiftUI
 
 public extension String {
     
@@ -61,4 +62,51 @@ public extension String {
         return NSLocalizedString(self, comment: comment ?? "")
     }
     
+}
+
+public extension String {
+    
+    /// Returns a localized version of the string for the current Swift package.
+    ///
+    /// This method provides localization specifically for strings within this Swift package.
+    /// It uses the automatically generated Bundle.module property to locate resources in the package's
+    /// Resources directory.
+    ///
+    /// - Returns: The localized string from the package's resources.
+    ///
+    /// - Note: This requires the package to have resources defined in Package.swift with
+    ///   the resources parameter and a defaultLocalization set.
+    ///
+    /// - Example:
+    /// ```swift
+    /// // Access localized strings from this package's resources
+    /// let packageMessage = "package_greeting".toLocalizedForPackage()
+    ///
+    /// // Can be used to provide standardized, pre-localized messages across apps
+    /// alertTitle.text = "error_title".toLocalizedForPackage()
+    /// ```
+    func toLocalizedForPackage() -> String {
+        NSLocalizedString(self, bundle: .module, comment: "")
+    }
+}
+
+public extension String {
+    
+    /// Converts a localized package string to a properly formatted string with actual line breaks.
+    ///
+    /// This method is useful when dealing with localized strings that contain escaped newline characters (\\n),
+    /// as it automatically converts them to actual line breaks in the resulting string.
+    ///
+    /// - Returns: A properly formatted string with actual line breaks instead of escaped sequences.
+    ///
+    /// - Example:
+    /// ```swift
+    /// // Assuming in package's Localizable.strings: "multiline_text" = "First line\\nSecond line";
+    /// let formattedText = "multiline_text".toLocalizedStringForPackage()
+    /// // Result: "First line
+    /// //          Second line" with an actual line break
+    /// ```
+    func toLocalizedStringForPackage() -> String {
+        self.toLocalizedForPackage().replacingOccurrences(of: "\\n", with: "\n")
+    }
 }
