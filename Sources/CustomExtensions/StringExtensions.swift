@@ -84,6 +84,7 @@ public extension String {
     /// let thisPackageMessage = "package_greeting".toLocalizedForPackage()
     ///
     /// // Access localized strings from a specific bundle
+    /// import swift_custom_extensions
     /// let customExtensionsMessage = "error_message".toLocalizedForPackage(bundle: swift_custom_extensions.Bundle.module)
     /// ```
     func toLocalizedForPackage(bundle: Bundle = .module) -> String {
@@ -109,6 +110,7 @@ public extension String {
     /// //          Second line" with an actual line break
     /// 
     /// // Using a specific bundle
+    /// import swift_custom_extensions
     /// let customText = "multiline_warning".toLocalizedStringForPackage(bundle: swift_custom_extensions.Bundle.module)
     /// ```
     func toLocalizedStringForPackage(bundle: Bundle = .module) -> String {
