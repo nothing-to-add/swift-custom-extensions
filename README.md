@@ -23,7 +23,7 @@ This package includes extensions for:
 
 - **`localized()`** - Converts a String to a `LocalizedStringKey` for easy use with SwiftUI localization
 - **`localizedNS(withComment:)`** - Returns a localized version of the string using `NSLocalizedString`
-- **`toLocalizedForPackage(bundle:)`** - Returns a localized version of the string using resources from a specified bundle (defaults to the current package's bundle)
+- **`toLocalizedForPackage(bundle:)`** - Returns a localized version of the string using resources from a specified bundle (defaults to the current package's bundle internally)
 - **`toLocalizedStringForPackage(bundle:)`** - Returns a properly formatted localized string with actual line breaks from a specified bundle
 
 ### Color Extensions
@@ -53,7 +53,7 @@ Add the following dependency to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/nothing-to-add/swift-custom-extensions.git", from: "1.0.4")
+    .package(url: "https://github.com/nothing-to-add/swift-custom-extensions.git", from: "1.0.5")
 ]
 ```
 
@@ -85,8 +85,8 @@ Text("hello_world".localized())  // Uses LocalizedStringKey for SwiftUI
 // Foundation localization
 let message = "greeting".localizedNS(withComment: "Shown on welcome screen")
 
-// Package-specific localization
-let packageMessage = "package_greeting".toLocalizedForPackage()  // Uses localized string from the current module's resources
+// Package-specific localization (uses current module's Bundle.module internally)
+let packageMessage = "package_greeting".toLocalizedForPackage()
 
 // Using a specific bundle for localization
 let customPackageMessage = "error_message".toLocalizedForPackage(bundle: swift_custom_extensions.Bundle.module)

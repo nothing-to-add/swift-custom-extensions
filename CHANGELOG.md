@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial development setup
 
+## [1.0.5] - 2025-05-27
+
+### Fixed
+- Fixed "Static property 'module' is internal and cannot be referenced from a default argument value" error when importing the package in other packages
+- Changed `Bundle.module` from a default parameter value to internal usage with an optional Bundle parameter
+
 ## [1.0.4] - 2025-05-27
 
 ### Changed
@@ -57,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Color(hex:alpha:)`: Creates a SwiftUI Color from a hexadecimal value
   - `Color.isDarkMode`: Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
-[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.1...v1.0.2
