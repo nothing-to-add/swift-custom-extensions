@@ -10,7 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial development setup
 
-## [1.1.0] - 2025-05-26
+## [1.0.4] - 2025-05-27
+
+### Changed
+- Fixed module import issues to correctly support `import swift_custom_extensions` syntax
+- Updated package structure to align target names with directory structure
+- Modified package localization functions to accept a custom bundle parameter:
+  - `toLocalizedForPackage(bundle:)`: Now accepts a Bundle parameter to support external package localization
+  - `toLocalizedStringForPackage(bundle:)`: Now accepts a Bundle parameter for flexible localization across modules
+- Updated documentation with proper import statements and bundle usage examples
+
+## [1.0.3] - 2025-05-26
 
 ### Added
 - New String extensions for package-specific localization:
@@ -47,8 +57,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Color(hex:alpha:)`: Creates a SwiftUI Color from a hexadecimal value
   - `Color.isDarkMode`: Static property to check if the current system appearance is in dark mode (iOS/tvOS only)
 
-[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.2...v1.1.0
+[Unreleased]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.3...v1.0.4
+[1.0.3]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/nothing-to-add/swift-custom-extensions/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/nothing-to-add/swift-custom-extensions/releases/tag/v1.0.0

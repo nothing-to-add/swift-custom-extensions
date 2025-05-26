@@ -23,8 +23,8 @@ This package includes extensions for:
 
 - **`localized()`** - Converts a String to a `LocalizedStringKey` for easy use with SwiftUI localization
 - **`localizedNS(withComment:)`** - Returns a localized version of the string using `NSLocalizedString`
-- **`toLocalizedForPackage()`** - Returns a localized version of the string using resources from the package's bundle
-- **`toLocalizedStringForPackage()`** - Returns a properly formatted localized string from the package with actual line breaks
+- **`toLocalizedForPackage(bundle:)`** - Returns a localized version of the string using resources from a specified bundle (defaults to the current package's bundle)
+- **`toLocalizedStringForPackage(bundle:)`** - Returns a properly formatted localized string with actual line breaks from a specified bundle
 
 ### Color Extensions
 
@@ -53,7 +53,7 @@ Add the following dependency to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/nothing-to-add/swift-custom-extensions.git", from: "1.0.0")
+    .package(url: "https://github.com/nothing-to-add/swift-custom-extensions.git", from: "1.0.4")
 ]
 ```
 
@@ -62,12 +62,22 @@ Or add it directly through Xcode:
 2. Enter the repository URL: `https://github.com/nothing-to-add/swift-custom-extensions.git`
 3. Follow the prompts to add the package to your project
 
+### Import Statement
+
+When using this package in your code, import it with:
+
+```swift
+import swift_custom_extensions
+```
+
+Note: Even though the package is named "CustomExtensions" in Package.swift, the module name for import is `swift_custom_extensions` to match the target structure.
+
 ## Usage
 
 ### String Extensions
 
 ```swift
-import CustomExtensions
+import swift_custom_extensions
 
 // SwiftUI localization
 Text("hello_world".localized())  // Uses LocalizedStringKey for SwiftUI
@@ -76,18 +86,24 @@ Text("hello_world".localized())  // Uses LocalizedStringKey for SwiftUI
 let message = "greeting".localizedNS(withComment: "Shown on welcome screen")
 
 // Package-specific localization
-let packageMessage = "package_greeting".toLocalizedForPackage()  // Uses localized string from the package's resources
+let packageMessage = "package_greeting".toLocalizedForPackage()  // Uses localized string from the current module's resources
+
+// Using a specific bundle for localization
+let customPackageMessage = "error_message".toLocalizedForPackage(bundle: swift_custom_extensions.Bundle.module)
 
 // Package-specific localization with line break handling
 // Assuming in package's Localizable.strings: "multiline_text" = "First line\\nSecond line";
 let formattedText = "multiline_text".toLocalizedStringForPackage()
 // Result has actual line breaks instead of escaped sequences
+
+// Using a specific bundle with line break handling
+let customFormattedText = "multiline_warning".toLocalizedStringForPackage(bundle: swift_custom_extensions.Bundle.module)
 ```
 
 ### Color Extensions
 
 ```swift
-import CustomExtensions
+import swift_custom_extensions
 
 // Create color from hex integer value
 let primaryColor = Color(hex: 0x3498DB)        // Fully opaque color
@@ -107,7 +123,7 @@ if Color.isDarkMode {
 ### LocalizedStringKey Extensions
 
 ```swift
-import CustomExtensions
+import swift_custom_extensions
 
 // Extract the key from a LocalizedStringKey
 let localizedKey = LocalizedStringKey("welcome_message")
