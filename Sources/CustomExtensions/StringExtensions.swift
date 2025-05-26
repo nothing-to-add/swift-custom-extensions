@@ -72,7 +72,7 @@ public extension String {
     /// By default, it uses the current module's bundle (Bundle.module), but you can also specify
     /// a custom bundle to use the localization from a different package.
     ///
-    /// - Parameter bundle: The bundle to use for localization. Default is Bundle.module.
+    /// - Parameter bundle: The bundle to use for localization. Default is nil, which will use Bundle.module internally.
     /// - Returns: The localized string from the specified bundle's resources.
     ///
     /// - Note: This requires the package to have resources defined in Package.swift with
@@ -87,8 +87,9 @@ public extension String {
     /// import swift_custom_extensions
     /// let customExtensionsMessage = "error_message".toLocalizedForPackage(bundle: swift_custom_extensions.Bundle.module)
     /// ```
-    func toLocalizedForPackage(bundle: Bundle = .module) -> String {
-        NSLocalizedString(self, bundle: bundle, comment: "")
+    func toLocalizedForPackage(bundle: Bundle? = nil) -> String {
+        let bundleToUse = bundle ?? Bundle.module
+        return NSLocalizedString(self, bundle: bundleToUse, comment: "")
     }
 }
 
@@ -99,7 +100,7 @@ public extension String {
     /// This method is useful when dealing with localized strings that contain escaped newline characters (\\n),
     /// as it automatically converts them to actual line breaks in the resulting string.
     ///
-    /// - Parameter bundle: The bundle to use for localization. Default is Bundle.module.
+    /// - Parameter bundle: The bundle to use for localization. Default is nil, which will use Bundle.module internally.
     /// - Returns: A properly formatted string with actual line breaks instead of escaped sequences.
     ///
     /// - Example:
@@ -113,7 +114,7 @@ public extension String {
     /// import swift_custom_extensions
     /// let customText = "multiline_warning".toLocalizedStringForPackage(bundle: swift_custom_extensions.Bundle.module)
     /// ```
-    func toLocalizedStringForPackage(bundle: Bundle = .module) -> String {
+    func toLocalizedStringForPackage(bundle: Bundle? = nil) -> String {
         self.toLocalizedForPackage(bundle: bundle).replacingOccurrences(of: "\\n", with: "\n")
     }
 }
